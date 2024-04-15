@@ -1,6 +1,12 @@
 package hust.cs.javacourse.search.parse;
 
 import hust.cs.javacourse.search.index.AbstractTermTuple;
+import hust.cs.javacourse.search.parse.impl.LengthTermTupleFilter;
+import hust.cs.javacourse.search.parse.impl.PatternTermTupleFilter;
+import hust.cs.javacourse.search.parse.impl.StopWordTermTupleFilter;
+import hust.cs.javacourse.search.parse.impl.TermTupleScanner;
+
+import java.io.*;
 
 /**
  * <pre>
@@ -19,4 +25,8 @@ public abstract class AbstractTermTupleStream {
      * 关闭流
      */
     public abstract void close();
+    static public AbstractTermTupleStream get_well( File file) throws FileNotFoundException {
+        return  new LengthTermTupleFilter(new PatternTermTupleFilter(new StopWordTermTupleFilter(
+                new TermTupleScanner(new BufferedReader(new InputStreamReader(new FileInputStream(file)))))));
+    }
 }

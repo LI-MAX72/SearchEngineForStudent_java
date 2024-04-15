@@ -19,7 +19,7 @@ public class TermTupleScanner extends AbstractTermTupleScanner {
     /**
      * input作为输入流对象，读取文本文件得到一个个三元组TermTuple
      */
-    protected BufferedReader input = null;
+
 
     {
         curPos = 0;
